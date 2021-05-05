@@ -1,0 +1,13 @@
+@import url("https://droplet-ui.netlify.app/dropletcss.css");
+
+.navbar-main-ul-ua {
+  text-decoration: none;
+  color: white;
+}
+
+.inputs-alignment {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+}
