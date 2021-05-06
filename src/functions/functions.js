@@ -8,7 +8,7 @@ export function ascsortbydate(arr, sorttype) {
     });
     return ascsorted;
   }
-  if (sorttype !== null && sorttype === "LOW_TO_HIGH") {
+  if (sorttype !== null && sorttype === "HIGH_TO_LOW") {
     const newarr = [...arr];
     const dessorted = newarr.sort((a, b) => {
       var c = new Date(a.date);
