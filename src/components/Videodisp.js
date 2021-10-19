@@ -3,14 +3,9 @@ import { useEffect, useState } from "react";
 import { baseurl } from "../api&url/url";
 
 export function Videodisp({ videodocid, setModaltoggle }) {
-  // console.log("viddata", viddata);
   const [state, setState] = useState({ videocode: "" });
   const url = baseurl + "/video/thisvideo/" + videodocid;
   const yturl = "https://www.youtube-nocookie.com/embed/" + state.videocode;
-  // const url1 = `https://www.youtube-nocookie.com/embed/${viddata.videocode}`;
-  // const finurl = String(url1);
-  // console.log("finurl", finurl);
-  // fetch video data
   console.log("span", state);
   useEffect(() => {
     let source = axios.CancelToken.source();
@@ -37,29 +32,35 @@ export function Videodisp({ videodocid, setModaltoggle }) {
 
   return (
     <div>
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          // backgroundColor: "black",
-        }}
-      >
-        <iframe
-          width="50%"
-          src={yturl}
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          style={{ aspectRatio: "16/9" }}
-        ></iframe>
+      <div className="video-page-container">
+        <div className="video-frame">
+          <iframe
+            className="video-iframe"
+            src={yturl}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen="allowfullscreen"
+          ></iframe>
+        </div>
+        <div className="video-title">
+          {state.name}
+          {state.prime && <span className="video-page-premium">prime</span>}
+        </div>
+        <div className="video-page-actions">
+          <div>{state.stars} stars</div>
+          <div className="video-page-controls">
+            <button
+              onClick={() => setModaltoggle(true)}
+              className="video-page-action"
+            >
+              <i className="bi bi-list"></i>&nbsp;
+              <p>add to playlist</p>
+            </button>
+          </div>
+        </div>
+        <div className="video-description"></div>
       </div>
-      <h3 style={{ textAlign: "center" }}>
-        {state.name}
-        <button onClick={() => setModaltoggle(true)}>add to playlist</button>
-      </h3>
     </div>
   );
 }

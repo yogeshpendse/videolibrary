@@ -1,18 +1,21 @@
 import { useState } from "react";
 import { Datadisp } from "../components/Datadisp";
 import { Playlistmodal } from "../components/Playlistmodal";
-import { useVidcontext } from "../contexts/Vidprovider";
 // import { Inputfields } from "../components/Inputfields";
 
 export function Hompeage() {
-  const { loading } = useVidcontext();
+  const [loading, setLoading] = useState(true);
   const [modaltoggle, setModaltoggle] = useState(false);
   const [thisprod, setThisprod] = useState({});
   return (
-    <div style={{ marginTop: "5rem" }}>
-      {/* <Inputfields /> */}
-      {loading && <h1 style={{ textAlign: "center" }}>Loading...</h1>}
-      <Datadisp setThisprod={setThisprod} setModaltoggle={setModaltoggle} />
+    <div className="mt-5rem">
+      <Datadisp
+        setThisprod={setThisprod}
+        setModaltoggle={setModaltoggle}
+        setLoading={setLoading}
+        loading={loading}
+      />
+
       <Playlistmodal
         setModaltoggle={setModaltoggle}
         modaltoggle={modaltoggle}

@@ -85,32 +85,47 @@ export function Playlists() {
   }
 
   return (
-    <div>
-      <div>
+    <>
+      <div className="text-align-center" style={{ fontSize: "2rem" }}>
         <input value={text} onChange={(e) => setText(e.target.value)} />
         <button
           onClick={() => clickhandler()}
+          className={
+            text.length > 0
+              ? "primary-playlist-btn btn-primary-active"
+              : "primary-playlist-btn btn-primary-disabled"
+          }
           disabled={text.length > 0 ? false : true}
         >
-          check
+          insert
         </button>
       </div>
-      {playlists.playlist.map((item) => {
-        return (
-          <div key={item._id}>
-            <h1>
-              <Link to={`/playlist/${item.playlistcode}`}>{item.name}</Link>
+      <ul className="video-container">
+        {playlists.playlist.map((item) => {
+          return (
+            <li key={item._id} className="video-playlist-item">
+              <div className="video-playlist-item-details">
+                <p className="video-playlist-item-name">
+                  <Link
+                    to={`/playlist/${item.playlistcode}`}
+                    style={{ color: "black", textDecoration: "none" }}
+                  >
+                    {item.name}
+                  </Link>
+                </p>
+              </div>
               <button
                 onClick={() =>
                   deleteclickhandler({ playlistid: item.playlistcode })
                 }
+                className="video-playlist-btn-delete"
               >
-                delete
+                <i className="bi bi-trash-fill"></i>
               </button>
-            </h1>
-          </div>
-        );
-      })}
-    </div>
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 }

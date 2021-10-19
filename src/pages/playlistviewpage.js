@@ -55,14 +55,36 @@ export function Playlistviewpage() {
     }
   }
   return (
-    <div className="mt-5rem" style={{ marginLeft: "0.5rem" }}>
+    <div className="video-container mt-5rem">
       {[...playlists.fetchedplaylist].map((item) => {
         return (
-          <div key={item._id}>
-            <div>
-              <Link to={`/videopage/${item._id}`}>{item.name}</Link>
+          <div key={item._id} className="video-card">
+            <div className="video-top">
+              <img
+                src="https://i.ytimg.com/vi/uD0bR7JXI6k/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAhk-L_wECsqAxwendWgpXp_Yp01g"
+                alt="video-thumbnail"
+                className="video-thumbnail"
+              />
+              <span className="video-time">{item.time} min</span>
             </div>
-            <button onClick={() => clickhandler({ itemid: item._id })}>
+            <div className="video-details">
+              <Link
+                className="video-title link-decoration"
+                to={`/videopage/${item._id}`}
+              >
+                {item.name}
+              </Link>
+            </div>
+            <Link
+              className="view-button border-radius-bottom-0rem border-radius-top-0rem link-decoration"
+              to={`/videopage/${item._id}`}
+            >
+              view
+            </Link>
+            <button
+              onClick={() => clickhandler({ itemid: item._id })}
+              className="view-button-delete border-radius-top-0rem"
+            >
               delete
             </button>
           </div>

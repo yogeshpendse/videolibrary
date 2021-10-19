@@ -6,11 +6,9 @@ export function Vidpage() {
   const op = useParams();
   const [modaltoggle, setModaltoggle] = useState(false);
   const thisprod = { _id: op.id };
-  console.log("op1", op);
   return (
     <div>
-      <div style={{ marginTop: "5rem" }}>
-        <h1 style={{ textAlign: "center" }}>this is Vidpage {op.id}</h1>
+      <div className="mt-5rem">
         <Videodisp videodocid={op.id} setModaltoggle={setModaltoggle} />
         {modaltoggle && (
           <Playlistmodal
