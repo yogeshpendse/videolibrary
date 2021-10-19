@@ -48,24 +48,24 @@ export function Datadisp(params) {
         <div className="video-container">
           {videoarray.map((x) => (
             <div className="video-card" key={x._id}>
-              <div class="video-top">
+              <div className="video-top">
                 <img
                   src={x.thumbnail}
                   alt="video-thumbnail"
-                  class="video-thumbnail"
+                  className="video-thumbnail"
                 />
-                <span class="video-time">{x.time} min</span>
-                <div class="video-thumbnail-controls video-hover">
+                <span className="video-time">{x.time} min</span>
+                <div className="video-thumbnail-controls video-hover">
                   <button
-                    class="video-thumbnail-button cursor-pointer"
+                    className="video-thumbnail-button cursor-pointer"
                     onClick={() => handleclick(x)}
                   >
-                    <i class="bi bi-list-ul"></i>
+                    <i className="bi bi-list-ul"></i>
                   </button>
                 </div>
               </div>
-              <div class="video-details">
-                <p class="video-title">
+              <div className="video-details">
+                <p className="video-title">
                   <Link
                     to={`/videopage/${x._id}`}
                     style={{ color: "black", textDecoration: "none" }}

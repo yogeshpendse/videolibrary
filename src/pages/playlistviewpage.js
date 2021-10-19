@@ -61,7 +61,7 @@ export function Playlistviewpage() {
           <div key={item._id} className="video-card">
             <div className="video-top">
               <img
-                src="https://i.ytimg.com/vi/uD0bR7JXI6k/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAhk-L_wECsqAxwendWgpXp_Yp01g"
+                src={item.thumbnail}
                 alt="video-thumbnail"
                 className="video-thumbnail"
               />
