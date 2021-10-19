@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Account } from "../pages/account";
 import { Hompeage } from "../pages/homepage";
+import { Playlistviewpage } from "../pages/playlistviewpage";
 import { Playlist } from "../pages/private/playlist";
 import { Vidpage } from "../pages/videopage";
 import { Privatrouter } from "./privateroutes/privateroute";
@@ -14,6 +15,10 @@ export function Reactrouter() {
         <Route exact path="/videopage/:id" element={<Vidpage />} />
         <Route exact path="/playlist/videopage/:id" element={<Vidpage />} />
         <Privatrouter path="/playlist" element={<Playlist />} />
+        <Privatrouter
+          path="/playlist/:playlistid"
+          element={<Playlistviewpage />}
+        />
       </Routes>
     </div>
   );

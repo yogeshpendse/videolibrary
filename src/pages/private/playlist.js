@@ -1,12 +1,10 @@
-import { Navbar } from "../../components/Navbar";
-import { Watchlist } from "../../components/Watchlist";
+import { Playlists } from "../../components/Playlists";
 
 export function Playlist() {
   return (
-    <div>
-      <Navbar />
+    <div style={{ marginTop: "5rem" }}>
       <h1>Yeh Playlist hai</h1>
-      <Watchlist />
+      <Playlists />
     </div>
   );
 }

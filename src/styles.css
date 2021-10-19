@@ -1,6 +1,19 @@
-@import url("https://droplet-ui.netlify.app/dropletcss.css");
+/* @import url("https://droplet-ui.netlify.app/dropletcss.css"); */
+:root {
+  --primary-color: #0d6efd;
+  --disabled-primary-color: #61a0fd;
+  --background-color: whitesmoke;
+  --secondary-color: black;
+  --primary-text-color: black;
+  --secondary-text-color: white;
+  --tertiary-color: #dadada;
+  --some-background: #dadadaad;
+  --price-green: #118c4f;
+  --danger-color: red;
+  --golden: #ffd700;
+}
 
-.navbar-main-ul-ua {
+/* .navbar-main-ul-ua {
   text-decoration: none;
   color: white;
 }
@@ -10,4 +23,64 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
+} */
+.input-form {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.input-elements {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 15rem;
+}
+.input-element {
+  font-size: large;
+  text-align: center;
+  font-family: sans-serif;
+  padding: 0.5rem;
+  border: none;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+.input-form-submit {
+  font-size: large;
+  font-family: sans-serif;
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.input-toggle {
+  display: flex;
+  justify-content: space-evenly;
+}
+.input-toggle-button {
+  color: var(--primary-color);
+  background-color: inherit;
+  border: none;
+  text-decoration: none;
+  font-size: large;
+}
+.input-form-submit-disabled {
+  font-size: large;
+  font-family: sans-serif;
+  border: none;
+  cursor: not-allowed;
+  background-color: var(--disabled-primary-color);
+  color: var(--secondary-text-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.text-decoration-underline {
+  text-decoration: underline;
+}
+.mt-5rem {
+  margin-top: 5rem;
+}
+.text-decoration-none {
+  text-decoration: none;
+  color: var(--primary-text-color);
 }
