@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 import { baseurl } from "../api&url/url";
 export function Playlistviewpage() {
   const useparams = useParams();
-  const { authtoken } = useAuthcontext();
+  const { authtoken, userid } = useAuthcontext();
+  const showbtntoggle = useparams.playlistid.includes(userid);
   const { playlistdispatch, playlists } = useVidcontext();
   const url = baseurl + "/video/" + useparams.playlistid;
   useEffect(() => {
@@ -55,41 +56,46 @@ export function Playlistviewpage() {
     }
   }
   return (
-    <div className="video-container mt-5rem">
+    <div
+      className="display-flex
+        flex-direction-column
+        justify-content-center
+        mt-5rem
+        playlist-margin-horizontal
+        "
+    >
       {[...playlists.fetchedplaylist].map((item) => {
         return (
-          <div key={item._id} className="video-card">
-            <div className="video-top">
-              <img
-                src={item.thumbnail}
-                alt="video-thumbnail"
-                className="video-thumbnail"
-              />
-              <span className="video-time">{item.time} min</span>
+          <div key={item._id} className="video-playlist-item">
+            <div className="video-playlist-item-image">
+              <Link to={`/videopage/${item._id}`}>
+                <img
+                  className="video-playlist-item-thumbnail"
+                  src={item.thumbnail}
+                  alt="video"
+                />
+              </Link>
             </div>
-            <div className="video-details">
+            <div className="video-playlist-item-details">
               <Link
-                className="video-title link-decoration"
+                className="video-playlist-item-name link-decoration text-black line-clamp-1 text-overflow-ellipsis"
                 to={`/videopage/${item._id}`}
               >
                 {item.name}
               </Link>
             </div>
-            <Link
-              className="view-button border-radius-bottom-0rem border-radius-top-0rem link-decoration"
-              to={`/videopage/${item._id}`}
-            >
-              view
-            </Link>
-            <button
-              onClick={() => clickhandler({ itemid: item._id })}
-              className="view-button-delete border-radius-top-0rem"
-            >
-              delete
-            </button>
+            {showbtntoggle && (
+              <button
+                onClick={() => clickhandler({ itemid: item._id })}
+                className="video-playlist-btn-delete"
+              >
+                <i className="bi bi-trash-fill"></i>
+              </button>
+            )}
           </div>
         );
       })}
     </div>
   );
 }
+// onClick={() => clickhandler({ itemid: item._id })}

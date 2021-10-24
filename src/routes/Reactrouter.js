@@ -15,7 +15,12 @@ export function Reactrouter() {
         <Route exact path="/videopage/:id" element={<Vidpage />} />
         <Route exact path="/playlist/videopage/:id" element={<Vidpage />} />
         <Privatrouter path="/playlist" element={<Playlist />} />
-        <Privatrouter
+        {/* <Privatrouter
+          path="/playlist/:playlistid"
+          element={<Playlistviewpage />}
+        /> */}
+        <Route
+          exact
           path="/playlist/:playlistid"
           element={<Playlistviewpage />}
         />

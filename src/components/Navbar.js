@@ -17,7 +17,9 @@ export function Navbar() {
       <header>
         <nav className="color-fixes">
           <div className="Navbar">
-            <h3 style={{ paddingLeft: "1rem", fontStyle: "italic" }}>Pizza+</h3>
+            <h3 style={{ paddingLeft: "1rem", fontStyle: "italic" }}>
+              InfoFlix
+            </h3>
             {screensizetoggle ? (
               <div className="display-list">
                 <span>
@@ -75,7 +77,7 @@ export function Navbar() {
 function Listval(state) {
   return (
     <>
-      <ul className="links">
+      <ul className="links ml-1rem">
         <li className="links-item">
           <NavLink end className="navbar-link" to="/">
             home

@@ -104,7 +104,7 @@ export function Playlists() {
         {playlists.playlist.map((item) => {
           return (
             <li key={item._id} className="video-playlist-item">
-              <div className="video-playlist-item-details">
+              <div className="video-playlist-item-details ml-1rem">
                 <p className="video-playlist-item-name">
                   <Link
                     to={`/playlist/${item.playlistcode}`}
