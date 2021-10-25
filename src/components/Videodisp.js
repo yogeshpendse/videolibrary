@@ -4,7 +4,7 @@ import { baseurl } from "../api&url/url";
 import { useAuthcontext } from "../contexts/Loginprovider";
 
 export function Videodisp({ videodocid, setModaltoggle }) {
-  const { clienttoken } = useAuthcontext();
+  const { loginstatus } = useAuthcontext();
   const [state, setState] = useState({ videocode: "" });
   const url = baseurl + "/video/thisvideo/" + videodocid;
   const yturl = "https://www.youtube-nocookie.com/embed/" + state.videocode;
@@ -52,7 +52,7 @@ export function Videodisp({ videodocid, setModaltoggle }) {
         <div className="video-page-actions">
           <div>{state.stars} stars</div>
           <div className="video-page-controls">
-            {clienttoken && (
+            {loginstatus && (
               <button
                 onClick={() => setModaltoggle(true)}
                 className="video-page-action"

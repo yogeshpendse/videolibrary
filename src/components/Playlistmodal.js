@@ -28,7 +28,7 @@ export function Playlistmodal(params) {
         if (axios.isCancel(error)) {
           console.log("axiosCancel: caught cancel");
         } else {
-          console.log(error);
+          console.log({ error });
         }
       }
     };

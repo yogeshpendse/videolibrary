@@ -19,13 +19,14 @@ export function Logger() {
         username: usernameval,
         password: passwordval,
       });
-      console.log(response);
+      console.log({ response });
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("loginbool", response.data.success);
         localStorage.setItem("userid", response.data.userid);
+        console.log("login success");
         setUserid(response.data.userid);
-        setLoginstatus(response.data.success);
+        setLoginstatus(true);
         setAuthtoken(response.data.token);
         // console.log({ statevalue: state.from });
         state?.from && navigate(state.from || "/");
