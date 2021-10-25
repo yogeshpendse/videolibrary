@@ -79,7 +79,12 @@ export function Playlistmodal(params) {
                 })}
               </div>
             </div>
-            <button onClick={() => setModaltoggle(false)}>close</button>
+            <button
+              className="modal-close"
+              onClick={() => setModaltoggle(false)}
+            >
+              close
+            </button>
           </div>
         </div>
       )}
