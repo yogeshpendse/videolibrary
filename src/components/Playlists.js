@@ -29,8 +29,9 @@ export function Playlists() {
         payload: { playlistitem },
       });
       setText("");
+      console.log("Toast : playlist created");
     } else {
-      console.log("something went wrong");
+      console.log("Toast : something went wrong");
     }
   }
   useEffect(() => {
@@ -73,7 +74,7 @@ export function Playlists() {
         type: "DELETE_PLAYLIST",
         payload: { playlistcode: playlistid },
       });
-      console.log("toast");
+      console.log("Toast : Playlist deleted");
     } else if (
       response.error.response.data.message === "Playlist doesn't exist" &&
       response.success === false

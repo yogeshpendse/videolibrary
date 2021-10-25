@@ -5,15 +5,31 @@
 .text-align-center {
   text-align: center;
 }
+/* .modal-backround {
+  background-color: var(--primary-color);
+  z-index: 1;
+  width: 100%;
+  height: 20%;
+} */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
 .modal-box {
   position: fixed;
+  padding: 1rem;
   top: 50%;
   left: 50%;
   width: auto;
   transform: translate(-50%, -50%);
   padding: inherit 1rem;
-  background: white;
-  z-index: 1;
+  background-color: white;
+  z-index: 10;
 }
 .modal {
   border: 1px solid black;

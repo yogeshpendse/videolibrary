@@ -52,7 +52,9 @@ export function Playlistviewpage() {
         type: "DELETE_FROM_PLAYLIST",
         payload: { itemid },
       });
-      console.log("deleted");
+      console.log("Toast : video deleted");
+    } else {
+      console.log("Toast : something went wrong");
     }
   }
   return (

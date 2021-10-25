@@ -1,22 +1,17 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuthcontext } from "../contexts/Loginprovider";
 import axios from "axios";
 import { baseurl } from "../api&url/url";
 
 export function Logger() {
-  // loginstatus,
   const { setLoginstatus, setAuthtoken, setUserid, userid } = useAuthcontext();
   const { state } = useLocation();
   const [usernameval, setUsernameval] = useState("");
   const [passwordval, setPassword] = useState("");
   const disablestatus = usernameval.length > 0 && passwordval.length;
+  const useridstatus = userid === "null" ? true : false;
   const navigate = useNavigate();
-  console.log("state", state);
-  // function handler() {
-  //   setLoginstatus(!loginstatus);
-  //   state?.from && navigate(state.from);
-  // }
   async function checklogin() {
     try {
       const url = baseurl + "/user/login";
@@ -47,61 +42,63 @@ export function Logger() {
     localStorage.removeItem("userid");
     setLoginstatus(false);
     setAuthtoken(null);
-    window.location.reload();
+    setUserid("null");
+    // window.location.reload();
   };
   const onSubmit = (event) => {
     event.preventDefault();
     checklogin();
   };
-
+  console.log(typeof userid);
   return (
     <div>
-      {/* <h1>loginstatus &nbsp;{loginstatus ? "true" : "false"}</h1> */}
-      {/* <button onClick={handler}>{loginstatus ? "logout" : "login"}</button> */}
-      <form onSubmit={onSubmit}>
-        <div className="input-form">
-          <div className="input-elements">
-            <input
-              className="input-element"
-              placeholder="username"
-              onChange={(e) => handleusername(e.target.value)}
-            />
-            <input
-              className="input-element"
-              placeholder="password"
-              onChange={(e) => handlepassword(e.target.value)}
-            />
-            <button
-              type="submit"
-              className={
-                disablestatus
-                  ? "input-element btn btn-primary cursor-pointer"
-                  : "input-form-submit-disabled"
-              }
-              disabled={!disablestatus}
-              onClick={checklogin}
-            >
-              login
-            </button>
-            <button
-              type="submit"
-              className="input-element btn btn-primary cursor-pointer"
-              onClick={logout}
-            >
-              logout
-            </button>
-            <h3>{userid}</h3>
-            {/* <Link
-              className="input-toggle-button text-align-center"
-              to="/signup"
-            >
-              <p className="text-decoration-underline">
-                Don't have an account?
-              </p>
-            </Link> */}
+      {useridstatus ? (
+        <form onSubmit={onSubmit}>
+          <div className="input-form">
+            <div className="input-elements">
+              <input
+                className="input-element"
+                placeholder="username"
+                onChange={(e) => handleusername(e.target.value)}
+              />
+              <input
+                className="input-element"
+                placeholder="password"
+                onChange={(e) => handlepassword(e.target.value)}
+              />
+              <button
+                type="submit"
+                className={
+                  disablestatus
+                    ? "input-element btn btn-primary-active cursor-pointer"
+                    : "input-form-submit-disabled"
+                }
+                disabled={!disablestatus}
+                onClick={checklogin}
+              >
+                login
+              </button>
+              <Link
+                className="input-toggle-button text-align-center"
+                to="/register"
+              >
+                <p className="text-decoration-underline">
+                  Don't have an account?
+                </p>
+              </Link>
+            </div>
           </div>
+        </form>
+      ) : (
+        <div className="display-flex  justify-content-center">
+          <button
+            className="input-element btn btn-primary-active cursor-pointer"
+            onClick={logout}
+          >
+            logout
+          </button>
         </div>
-      </form>
+      )}
     </div>
   );
 }

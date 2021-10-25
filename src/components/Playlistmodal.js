@@ -46,36 +46,41 @@ export function Playlistmodal(params) {
       authtoken,
     });
     if (response.success) {
-      console.log("video is added to playlist");
+      console.log("Toast : video is added to playlist");
       setModaltoggle(false);
     } else if (
       response.errorresponse.message === "video is already present in playlist"
     ) {
-      console.log("send package toast : video is already present in playlist");
+      console.log("send package Toast : video is already present in playlist");
       setModaltoggle(false);
     } else {
-      console.log("send package toast : some error occured");
+      console.log("send package Toast : some error occured");
       setModaltoggle(false);
     }
   }
   return (
     <>
       {modaltoggle && (
-        <div className="modal-box text-align-center">
-          <div className="modal">
-            <div className="modal-content">
-              {playlists.playlist.map((item) => {
-                return (
-                  <div key={item.playlistcode} className="modal-control-items">
-                    <label onClick={() => clickhandler(item)}>
-                      {item.name}
-                    </label>
-                  </div>
-                );
-              })}
+        <div className="modal-overlay">
+          <div className="modal-box text-align-center">
+            <div className="modal">
+              <div className="modal-content">
+                {playlists.playlist.map((item) => {
+                  return (
+                    <div
+                      key={item.playlistcode}
+                      className="modal-control-items"
+                    >
+                      <label onClick={() => clickhandler(item)}>
+                        {item.name}
+                      </label>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
+            <button onClick={() => setModaltoggle(false)}>close</button>
           </div>
-          <button onClick={() => setModaltoggle(false)}>close</button>
         </div>
       )}
     </>

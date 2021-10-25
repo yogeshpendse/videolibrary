@@ -1,7 +1,7 @@
 import { Logger } from "../components/Logger";
 export function Account() {
   return (
-    <div style={{ marginTop: "5rem" }}>
+    <div className="mt-5rem">
       <Logger />
     </div>
   );
