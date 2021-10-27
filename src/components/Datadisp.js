@@ -3,11 +3,19 @@ import { useAuthcontext } from "../contexts/Loginprovider";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { baseurl } from "../api&url/url";
+import { searchitems } from "../functions/searchitems";
+import { useVidcontext } from "../contexts/Vidprovider";
+import { primefilters, sorter, timefilters } from "../functions/filters";
 export function Datadisp(params) {
   const { setThisprod, setModaltoggle, setLoading, loading } = params;
   const url = baseurl + "/video/getallvideos";
   const { authtoken } = useAuthcontext();
+  const { controls } = useVidcontext();
   const [videoarray, setVideoarray] = useState([]);
+  const newarr1 = searchitems(videoarray, controls.searchterm);
+  const newarr2 = primefilters(newarr1, controls.onlypro);
+  const newarr3 = timefilters(newarr2, controls.shortdocs);
+  const newarr4 = sorter(newarr3, controls.sortby);
   useEffect(() => {
     let source = axios.CancelToken.source();
     setLoading(true);
@@ -46,7 +54,7 @@ export function Datadisp(params) {
         <h1 style={{ textAlign: "center" }}>Loading...</h1>
       ) : (
         <div className="video-container">
-          {videoarray.map((x) => (
+          {[...newarr4].map((x) => (
             <div className="video-card" key={x._id}>
               <div className="video-top">
                 <img
@@ -73,7 +81,9 @@ export function Datadisp(params) {
                     {x.name}
                   </Link>
                 </p>
-                {/* <p class="video-creator">Lorem, ipsum.</p> */}
+                {/* <p class="video-creator">
+                  {x.date}&nbsp;{x.stars}
+                </p> */}
               </div>
               {/* <div class="view-button border-radius-top-0rem"> */}
               <Link

@@ -87,14 +87,25 @@ export function Playlists() {
 
   return (
     <>
-      <div className="text-align-center" style={{ fontSize: "2rem" }}>
-        <input value={text} onChange={(e) => setText(e.target.value)} />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+        className="text-align-center"
+      >
+        <input
+          className="fontsize-1rem border-radius-1rem playlist-input-border padding-0_5rem text-align-center"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="create playlist"
+        />
         <button
           onClick={() => clickhandler()}
           className={
             text.length > 0
-              ? "primary-playlist-btn btn-primary-active"
-              : "primary-playlist-btn btn-primary-disabled"
+              ? "primary-playlist-btn btn-primary-active fontsize-1rem padding-0_5rem"
+              : "primary-playlist-btn btn-primary-disabled fontsize-1rem padding-0_5rem"
           }
           disabled={text.length > 0 ? false : true}
         >

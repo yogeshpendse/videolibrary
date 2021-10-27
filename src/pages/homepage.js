@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Datadisp } from "../components/Datadisp";
+import { Inputcontrols } from "../components/Inputcontrols";
 import { Playlistmodal } from "../components/Playlistmodal";
 // import { Inputfields } from "../components/Inputfields";
 
@@ -9,6 +10,7 @@ export function Hompeage() {
   const [thisprod, setThisprod] = useState({});
   return (
     <div className="mt-5rem">
+      <Inputcontrols />
       <Datadisp
         setThisprod={setThisprod}
         setModaltoggle={setModaltoggle}

@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer, useState } from "react";
 import { vidreducer } from "../functions/reducerfn";
+import { controlreducer } from "../reducers/controlreducer";
 import { playlistreducer } from "../reducers/playlistreducer";
 export const Vidcontext = createContext();
 
@@ -15,6 +16,12 @@ export function Vidprovider({ children }) {
     playlist: [],
     fetchedplaylist: [],
   });
+  const [controls, controldispatch] = useReducer(controlreducer, {
+    searchterm: "",
+    onlypro: false,
+    shortdocs: false,
+    sortby: "RANDOM",
+  });
   const [loading, setLoading] = useState(false);
   const [searchterm, setsearchterm] = useState("");
   return (
@@ -28,6 +35,8 @@ export function Vidprovider({ children }) {
         setLoading,
         playlists,
         playlistdispatch,
+        controls,
+        controldispatch,
       }}
     >
       {children}

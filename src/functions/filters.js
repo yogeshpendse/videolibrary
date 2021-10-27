@@ -1,11 +1,31 @@
-export function filters(arr, open) {
+export function primefilters(arr, primebool) {
   const newarr = [...arr];
-  // console.log("open", open);
-  // console.log("toggles.onlypro", open.protoggle);
-  const retarr = newarr.filter((x) => (open.protoggle ? x.pro : true));
-  const retarr2 = retarr.filter((x) =>
-    open.durationtoggle ? x.duration < 5 : true
-  );
-  // console.log("retarr", retarr);
-  return retarr2;
+  const retarr = newarr.filter((x) => (primebool ? x.prime : true));
+  return retarr;
+}
+
+export function timefilters(arr, timebool) {
+  if (timebool) {
+    const newarr = [...arr];
+    const retarr = newarr.filter((x) => x.time < 31);
+    return retarr;
+  }
+  return arr;
+}
+
+export function sorter(arr, sortval) {
+  const newarr = [...arr];
+  if (sortval === "POPULAR") {
+    const populararray = newarr.sort(
+      (item1, item2) => item2.stars - item1.stars
+    );
+    return populararray;
+  } else if (sortval === "NEWEST") {
+    const newestarray = newarr.sort(
+      (item1, item2) => item2.datenos - item1.datenos
+    );
+    return newestarray;
+  } else {
+    return [...arr];
+  }
 }

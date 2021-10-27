@@ -407,3 +407,41 @@
     margin-left: 3rem;
   }
 }
+.input-search {
+  border: 1px solid black;
+  font-size: large;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 1rem;
+  outline: none;
+}
+
+.border-none {
+  border: none;
+}
+.font-size-large {
+  font-size: large;
+}
+.font-size-larger {
+  font-size: larger;
+}
+.ml-0_5rem {
+  margin-left: 0.5rem;
+}
+.filters {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  background-color: inherit;
+}
+.fontsize-1rem {
+  font-size: 1rem;
+}
+.padding-0_5rem {
+  padding: 0.5rem;
+}
+.border-radius-1rem {
+  border-radius: 1rem;
+}
+.playlist-input-border {
+  border: 1px solid black;
+}
