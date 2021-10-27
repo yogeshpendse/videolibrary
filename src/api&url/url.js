@@ -1,1 +1,1 @@
-export const baseurl = "http://localhost:7000";
+export const baseurl = "https://videolibrari.herokuapp.com";
