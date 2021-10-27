@@ -7,6 +7,7 @@ import axios from "axios";
 import { postplaylist } from "../api&url/postplaylist";
 import { postdeleteplaylist } from "../api&url/postdeleteplaylist";
 import { baseurl } from "../api&url/url";
+import { toast } from "react-toastify";
 export function Playlists() {
   const [text, setText] = useState("");
   const { authtoken, userid } = useAuthcontext();
@@ -29,9 +30,27 @@ export function Playlists() {
         payload: { playlistitem },
       });
       setText("");
-      console.log("Toast : playlist created");
+      // console.log("Toast : playlist created");
+      toast.success("playlist created", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else {
-      console.log("Toast : something went wrong");
+      // console.log("Toast : something went wrong");
+      toast.error("something went wrong", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
   useEffect(() => {
@@ -74,14 +93,41 @@ export function Playlists() {
         type: "DELETE_PLAYLIST",
         payload: { playlistcode: playlistid },
       });
-      console.log("Toast : Playlist deleted");
+      // console.log("Toast : Playlist deleted");
+      toast.success("Playlist deleted", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else if (
       response.error.response.data.message === "Playlist doesn't exist" &&
       response.success === false
     ) {
-      console.log("Toast : Playlist doesn't exist");
+      // console.log("Toast : Playlist doesn't exist");
+      toast.error("Playlist doesn't exist", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else {
-      console.log("Toast : Some error happened");
+      // console.log("Toast : Some error happened");
+      toast.error("Some error happened", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
 
@@ -104,7 +150,7 @@ export function Playlists() {
           onClick={() => clickhandler()}
           className={
             text.length > 0
-              ? "primary-playlist-btn btn-primary-active fontsize-1rem padding-0_5rem"
+              ? "primary-playlist-btn btn-primary-active fontsize-1rem padding-0_5rem cursor-pointer"
               : "primary-playlist-btn btn-primary-disabled fontsize-1rem padding-0_5rem"
           }
           disabled={text.length > 0 ? false : true}

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { postdeletefromplaylist } from "../api&url/postdeletefromplaylist";
 import { Link } from "react-router-dom";
 import { baseurl } from "../api&url/url";
+import { toast } from "react-toastify";
 export function Playlistviewpage() {
   const useparams = useParams();
   const { authtoken, userid } = useAuthcontext();
@@ -52,9 +53,27 @@ export function Playlistviewpage() {
         type: "DELETE_FROM_PLAYLIST",
         payload: { itemid },
       });
-      console.log("Toast : video deleted");
+      // console.log("Toast : video deleted");
+      toast.success("video deleted", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else {
-      console.log("Toast : something went wrong");
+      // console.log("Toast : something went wrong");
+      toast.error("something went wrong", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
   return (

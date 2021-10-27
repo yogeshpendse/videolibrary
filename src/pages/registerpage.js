@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { isStrongPassword } from "validator";
 import { baseurl } from "../api&url/url";
 export function Registerpage() {
@@ -23,16 +24,43 @@ export function Registerpage() {
       });
       console.log(response);
       if (response.status === 200) {
-        console.log("Toast : User created");
+        // console.log("Toast : User created");
+        toast.success("User created", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         setNameval("");
         setUsernameval("");
         setPassword("");
         return { boolval: true, message: "registration successfull" };
       } else {
-        console.log("Toast : Some error occured");
+        // console.log("Toast : Some error occured");
+        toast.error("Some error occured", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     } catch (error) {
-      console.log({ errormessage: error.response.data.message });
+      // console.log({ errormessage: error.response.data.message });
+      toast.error(error.response.data.message, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return { boolval: false, errormessage: error.response.data.message };
     }
   }
@@ -40,12 +68,30 @@ export function Registerpage() {
     event.preventDefault();
     const success_status = checkregister();
     if (success_status.boolval) {
-      console.log("Toast : ", { message: success_status.message });
+      // console.log("Toast : ", { message: success_status.message });
+      toast.success("success_status.message", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       setNameval("");
       setUsernameval("");
       setPassword("");
     } else {
       console.log("Toast : ", { message: success_status.errormessage });
+      toast.error(success_status.errormessage, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       setNameval("");
       setUsernameval("");
       setPassword("");

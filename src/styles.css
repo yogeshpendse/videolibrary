@@ -445,3 +445,6 @@
 .playlist-input-border {
   border: 1px solid black;
 }
+.cursor-pointer {
+  cursor: pointer;
+}

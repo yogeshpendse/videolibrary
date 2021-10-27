@@ -23,7 +23,7 @@ export function Inputcontrols() {
         />
       </div>
       <button
-        className="border-none font-size-larger ml-0_5rem filters"
+        className="border-none font-size-larger ml-0_5rem filters cursor-pointer"
         onClick={() => setModaltoggle(true)}
       >
         <i className="bi bi-filter"></i>&nbsp;

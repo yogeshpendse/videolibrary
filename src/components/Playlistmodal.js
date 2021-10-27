@@ -5,6 +5,7 @@ import { useVidcontext } from "../contexts/Vidprovider";
 import { useAuthcontext } from "../contexts/Loginprovider";
 import { postaddtoplaylist } from "../api&url/postaddtoplaylist";
 import { baseurl } from "../api&url/url";
+import { toast } from "react-toastify";
 
 export function Playlistmodal(params) {
   const { playlistdispatch, playlists } = useVidcontext();
@@ -46,15 +47,42 @@ export function Playlistmodal(params) {
       authtoken,
     });
     if (response.success) {
-      console.log("Toast : video is added to playlist");
+      // console.log("Toast : video is added to playlist");
+      toast.success("video is added to playlist", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       setModaltoggle(false);
     } else if (
       response.errorresponse.message === "video is already present in playlist"
     ) {
-      console.log("send package Toast : video is already present in playlist");
+      // console.log("send package Toast : video is already present");
+      toast.error("video is already present", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       setModaltoggle(false);
     } else {
-      console.log("send package Toast : some error occured");
+      // console.log("send package Toast : some error occured");
+      toast.error("some error occured", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       setModaltoggle(false);
     }
   }
