@@ -3,7 +3,7 @@ export async function postdeletefromplaylist(params) {
   try {
     const { authtoken, videouid, playlistid } = params;
     const response = await axios.post(
-      "http://localhost:7000/playlist/deletefromplaylist",
+      "https://videolibrari.herokuapp.com/playlist/deletefromplaylist",
       { videouid, playlistid },
       {
         headers: { authorization: authtoken },

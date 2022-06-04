@@ -3,7 +3,7 @@ export async function postplaylist(params) {
   try {
     const { authtoken, name, plid } = params;
     const response = await axios.post(
-      "http://localhost:7000/playlist/create",
+      "https://videolibrari.herokuapp.com/playlist/create",
       { name, plid },
       {
         headers: { authorization: authtoken },
