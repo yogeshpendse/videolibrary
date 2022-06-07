@@ -15,7 +15,7 @@ import { Myloader } from "./Myloader";
 
 export function Videodisp(params) {
   const { setCurrentvidid, setModaltoggle } = params;
-  const url = baseurl + "/video/getallvideos";
+  const url = `${baseurl}/video/getallvideos`;
   const [videoarray, setVideoArray] = useState([]);
   const [loader, setLoader] = useState(true);
   const { controls } = useVidcontext();
@@ -36,17 +36,14 @@ export function Videodisp(params) {
     (async function () {
       try {
         await sleep(2000);
-        console.log("fetching...");
         const response = await axios.get(url, { signal: signal });
         const data = response.data.data;
-        console.log(data);
-        console.log("fetching completed...");
         setVideoArray(data);
         setLoader(false);
       } catch (error) {
         setLoader(false);
         if (axios.isCancel(error)) {
-          console.log("Request canceled", error.message);
+          // console.log("Request canceled", error.message);
         } else {
           console.log(error);
         }

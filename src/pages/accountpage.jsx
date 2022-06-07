@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { baseurl } from "../apiandurls/url";
 import "../csslayouts/accountpage.css";
 import { useAuth } from "../contexts/Authprovider";
+import { toast } from "react-toastify";
 export function Accountpage() {
   const [usernameval, setUsernameval] = useState("testuser"); //testuser users
   const [passwordval, setPasswordval] = useState("Test@123"); //Test@123 User@123
@@ -12,7 +13,7 @@ export function Accountpage() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const from = state?.from?.pathname || "/";
-  console.log({ from });
+
   const url = `${baseurl}/user/login`;
   const { setLoginstatus, setAuthtoken, setUserid, loginstatus } = useAuth();
   const passwordbool = passwordval.length > 0 ? false : true;
@@ -36,7 +37,15 @@ export function Accountpage() {
       navigate(from);
     } catch (error) {
       setLoader(false);
-      console.log({ error: error.response.data.errormessage });
+      toast.error(error.response.data.errormessage, {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
   function handlelogout() {

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { postaddtoplaylist } from "../apiandurls/postaddtoplaylist";
 import { baseurl } from "../apiandurls/url";
+import { Myloader } from "../components/Myloader";
 import { useAuth } from "../contexts/Authprovider";
 import { toast } from "react-toastify";
 
@@ -21,17 +22,13 @@ export function Playlistmodal(params) {
           signal,
           headers: { authorization: authtoken },
         });
-        console.log({
-          location: "playlistmodal",
-          response: response.data.userplaylists,
-        });
         setPlayllist(response.data.userplaylists);
         setLoader(false);
       } catch (error) {
         setLoader(false);
         if (axios.isAxiosError(error)) {
         } else {
-          console.log("some error occured");
+          console.log("some error occured in Playlistmodal.jsx");
         }
       }
     })();
@@ -41,19 +38,14 @@ export function Playlistmodal(params) {
     };
   }, [url, authtoken]);
   async function clickhandler(params) {
-    console.log(params);
-    console.log({
-      videouid: currentvidid._id,
-      playlisyid: params.playlistcode,
-    });
+    setModaltoggle(false);
     const response = await postaddtoplaylist({
       authtoken,
       videouid: currentvidid._id,
       playlistid: params.playlistcode,
     });
-    console.log(response);
+
     if (response.success) {
-      setModaltoggle(false);
       toast.success("Added to playlist", {
         position: "top-right",
         autoClose: 2500,
@@ -63,9 +55,19 @@ export function Playlistmodal(params) {
         draggable: true,
         progress: undefined,
       });
+    } else if (
+      response.errorresponse.message === "video is already present in playlist"
+    ) {
+      toast.error(response.errorresponse.message, {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else {
-      console.log("An error has occured.");
-      setModaltoggle(false);
       toast.error("An error has occured.", {
         position: "top-right",
         autoClose: 2500,
@@ -84,13 +86,14 @@ export function Playlistmodal(params) {
           <div className="modal__header">Paylist</div>
           <div className="modal__content">
             {loader ? (
-              <p>loader...</p>
+              <Myloader />
             ) : (
               <ul>
                 {[...playlist].map((item) => (
                   <li
                     key={item.playlistcode}
                     onClick={() => clickhandler(item)}
+                    className="modal__playlists"
                   >
                     {item.name}
                   </li>

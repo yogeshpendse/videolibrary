@@ -75,7 +75,6 @@ export function Playlistpage() {
       controller.abort();
     };
   }, [authtoken, url]);
-  console.log(authtoken);
   return (
     <div className="playlistpage">
       <center className="playlistpage_inputcontainer">
@@ -96,21 +95,23 @@ export function Playlistpage() {
         <Myloader />
       ) : (
         <div className="playlistpage__playlistcontainer">
-          {[...playlist].map((item) => (
-            <div className="playlistpage__playbox" key={item._id}>
-              <Link to={`/playlist/${item.playlistcode}`}>
-                <h1>{item.name}</h1>
-              </Link>
-              <button
-                onClick={() =>
-                  handleplaylistdelete({ playlistid: item.playlistcode })
-                }
-                className="btn btn-red"
-              >
-                delete
-              </button>
-            </div>
-          ))}
+          <div className="playlistpage__playboxcont">
+            {[...playlist].map((item) => (
+              <div className="playlistpage__playbox" key={item._id}>
+                <Link to={`/playlist/${item.playlistcode}`}>
+                  <h1>{item.name}</h1>
+                </Link>
+                <button
+                  onClick={() =>
+                    handleplaylistdelete({ playlistid: item.playlistcode })
+                  }
+                  className="btn btn-red"
+                >
+                  delete&nbsp;
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
