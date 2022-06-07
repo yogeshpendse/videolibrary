@@ -1,0 +1,44 @@
+@import url("https://bluecss.netlify.app/style.css");
+.mt-4rem {
+  margin-top: 4rem;
+}
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+.lift-navbar {
+  z-index: 5;
+}
+.mt-2rem {
+  margin-top: 2rem;
+}
+.scale_1_5:hover {
+  scale: 1.5;
+  transition: all 0.3s;
+}
+.btn--disabled {
+  background-color: dimgrey;
+  color: white;
+}
+.myloader-sm {
+  width: 10px;
+  height: 10px;
+  border: 5px solid white;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
