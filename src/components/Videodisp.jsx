@@ -66,7 +66,7 @@ export function Videodisp(params) {
               <h1>No videos left</h1>
             </center>
           )}
-          <div className="grid grid__col--3">
+          <div className="grid grid__col--3 vcard-container">
             {[...array4].map((item) => (
               <div className="vcard" key={item._id}>
                 <div className="vcard__imagebox">
